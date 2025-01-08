@@ -1,0 +1,297 @@
+---
+title: "Chapter 6 Project"
+author: "Riley Walburger"
+date: "2/04/2022"
+output: 
+  html_document:
+    theme: cerulean
+    code_folding: hide
+---
+
+```{r libraries, message=FALSE, warning=FALSE}
+library(cowplot)
+library(ggplot2)
+library(magick)
+
+```
+
+# Part 1
+
+![Model](C:/Users\walbr\Desktop\Intermediate Macro\Block 1\0001.jpg){width=65%}
+
+We can find the steady state of an economy by looking for where the dilution function and savings function intersect. If you are to the right of the steady state($k^*$) then capital is getting diluted/depreciated more than you are invested and so will naturally put you towards the steady state. The same is true if you are to the left of $k^*$ then you are investing more than capital is depreciating thus you will move to having more capital per capita. 
+Output (y) is then helpful to find how much consumption you will have because it is the difference between output and investment.
+
+## Formulas Based On Theory
+
+### Solow Romer Growth Model
+
+$$ 
+  \textbf{Parameters:} \\
+  \alpha: Percentage of Income Invested \\
+  \bar{s}: Savings Rate \\
+  \bar{l}: Labor Towards Research \\
+  \delta : Depreciation \\
+  n: labor share towardss research \\
+  z: research productivity \\
+  K_0: Initial Capital \\
+  L_0: Initial Labor \\
+  A_0: Initial Existing Knowledge 
+$$
+
+
+$$ 
+  \textbf{Endogenous Variables:} \\
+Y_0: Initial Capital \\
+K_t: Capital(Periodt) \\
+A_t: Knowledge(Periodt) \\
+L_t: Labor(Periodt) \\
+C_t: Consumtion(Periodt) \\
+I_t: Investment(Periodt) \\
+L_{at}: LaborPutTowardsInvestment(Periodt) \\
+L_{yt}: LaborPutTowardsConsumption(Periodt)
+$$
+
+### Production Function: 
+$$
+Y_t =F(K_t,L_t,A_t) = K^{\alpha}_t(A_tL_t)^{\beta} = K_t^{\frac{1}{3}}(A_tL_t)^{\frac{2}{3}}
+$$
+---
+title: "Notes - Solow Romer Model"
+author: "Riley Walburger"
+date: "2/4/2022"
+output: html_document
+---
+### Intratemporal Resource Constraints
+$$
+  Y_t = I_t+C_t \\
+  L_t = L_{at}+L_{yt}
+$$
+
+Within these equations we can see that Output also is a made up of Investment and Consumption.
+We also have Total Labor being split into two parts $L_{at}$ which is Labor getting put towards research and finding new knowledge and $L_{yt}$ which is the part of labor going towards consumption. These added together make up total labor. 
+
+### Resource Allocation
+$$
+I_t = \bar{s}Y_t \\
+L_{at}=l*L_t
+$$
+
+In these equations we can see that Investment is the percentage Invested from total output. For EXample if we save 15% then $\bar{s}$ = .15 and Total Output would be 1500. So we multiply these together to say that we are Investing 225.
+
+The next equation is very similar in the sense that l is the proportion of labor going towards research. Thus the proportion multiplied by Total Labor is equal to Labor put towards research. 
+### Intratemporal Constraints (Laws of Motion)
+
+$$
+\Delta K_{t+a}=I_t-\delta K_t \\
+\Delta A_{t+a}=z*\frac{L_{at}}{L_t}*A_t\\
+$$
+
+
+
+$$
+\frac{\Delta L_{t+a}}{L_t}=n
+$$
+
+### Simplifying
+
+$$
+Y_t=K^\alpha_t[A_t(1-l)L_t]^{1-\alpha}
+$$
+
+We get this next equation by pulling $(1-l)^{1-\alpha}$ out of the parenthesis. 
+$$
+Y_t = (1-l)^{1-\alpha}K^{\alpha}_t(A_tL_t)^{1-\alpha}
+$$
+
+
+
+#### Combine Eq 4 and 6
+
+$$
+\Delta K_{t+1}=\bar{s}Y_t-\delta K_t
+$$
+
+#### Combine Eq 7 and 5
+
+$$
+\Delta A_{t+1} = z * \frac{L_{at}}{L_t}*A_t
+$$
+
+We know that $l_t = \frac{L_{at}}{L_t}$. We can replave that in this last equation and get.
+
+$$
+\Delta A_{t+1} = z * l*A_t
+$$
+
+We can get a constant growth rate of TFP over time by dividing both sides by $A_t$.
+
+$$
+\frac{\Delta A_{t+1}}{A_t} = z * l
+$$
+Thus percentage growth of TFP or ideas is equal to the percentage of workers in research multiplied by how efficient they are at research. 
+
+### Inkusive Form
+
+To understand the model dynamics we need to develop a phase diagram that shows how capital evolves over time. 
+
+
+We want to define:
+$$
+k_t = \frac{K_t}{A_tL_t} \> \>     y_t = \frac{Y_t}{A_tL_t}
+$$
+
+This means that $k_t$ is effective capital per capita. This is different from before when we had it defined as just capital per capita. This is similar with $y_t$ being effective output per capita. 
+
+$$
+y_t = (1-l)^{1-\alpha}k^{\alpha}
+$$
+
+#### Law of Motion in intensive form
+$$
+\frac{\Delta k_{t+1}}{k_t}= \frac{\Delta K_{t+1}}{K_t}-\frac{\Delta A_{t+1}}{A_t}-\frac{\Delta L_{t+1}}{L_t}
+$$
+
+
+By combining Eq 8,10,11
+
+$$
+\frac{\Delta k_{t+1}}{k_t}= \frac{\bar{s} Y_t- \delta K_t}{K_t} -z*l-n
+$$
+
+
+Simplify 
+
+$$
+\Delta k_{t+1} = s*(1-l)^{1-\alpha}k^{\alpha} -(z*l+n+\delta)k_t
+$$
+
+When we are in steady state $k^*$ or $\Delta k_{t+1}$ will be equal to zero since depreciation and dilution will equal the amount of new capital per capita. Thus we can set the equation above equal to zero. 
+
+$$
+k^* = \Delta k_{t+1} = 0 =  s*(1-l)^{1-\alpha}k^{\alpha} -(z*l+n+\delta)k_t
+$$
+
+So we take the last equation and set the two parts equal to each other. 
+
+From here on out k will also be in terms of $k^*$ because we are assuming steady state rather than capital in different periods of time. 
+
+$$
+s*(1-l)^{1-\alpha}k^{*\alpha} = (z*l+n+\delta)k^*
+$$
+
+As we solve for $k^*$ we get:
+
+$$
+k^* = (\frac{\bar{s}}{zl+n+\delta})^{\frac{1}{1-\alpha}}(1-l)
+$$
+
+From before we defined  $y* = (1-l)^{1-\alpha}k^{*\alpha}$ which means we can now input $k^*$ into this equation and end up with.
+
+$$
+y^* = (1-l)^{1-\alpha}(\frac{\bar{s}}{zl+n+\delta})^{\frac{\alpha}{1-\alpha}}
+$$
+
+We can see that Output is determined by Capital, Labor along with New Ideas or Knowledge($A_t$). We have also changed that these new ideas are within the same parameter as Labor. This is because the Labor is gaining knowledge, the machines are not. People make them smarter but the $K_t$ itself does not get smarter. 
+
+We can define the steady state as a time when $\Delta K_{t+1} = 0$. Or in other words the change of capital per capita from year to year stays the same. As I solved for what $k^*$ is I found that we can set $k^*$ to year because it will be staying the same from year to year. 
+$$
+k^* = \Delta k_{t+1} = 0 =  s*(1-l)^{1-\alpha}k^{\alpha} -(z*l+n+\delta)k_t
+$$
+
+We can also split it into two parts that equal each other as said before. (Dilution = Investment) 
+$$
+=> 
+s*(1-l)^{1-\alpha}k^{*\alpha} = (z*l+n+\delta)k^*
+$$
+
+From here we assume that we are in Steady state and find $k^*$:
+$$
+k^* = (\frac{\bar{s}}{zl+n+\delta})^{\frac{1}{1-\alpha}}(1-l)
+$$
+
+Plugging in $k^*$ for $y*$ we get:
+$$
+y^* = (1-l)^{1-\alpha}(\frac{\bar{s}}{zl+n+\delta})^{\frac{\alpha}{1-\alpha}}
+$$
+
+We can now use our function for consumption to find the way to maximize consumption. 
+
+$$
+c^* = (1-s)y^* \\
+= (1-s)(1-l)^{1-\alpha}k^{*\alpha}
+$$
+
+We can find $k^*_{Gold}$ and then solve for $s_{Gold}$ that maximizes $c^*$
+$$
+k^*_{Gold} = (\frac{\alpha}{z*l+n+\delta})^\frac{1}{1-\alpha} (1-l)\\
+$$
+
+#### So:
+$$
+S_{Gold} = \alpha
+$$
+This tells us that the best savings rate to maximize consumption in steady state is equal to Alpha. This is the percentage of Income going towards caital owners. Thus, all income going towards income owners should be reinvested for us to have maximum consumption in the long run. This is true in Steady state in which we are always going towards but as a country we never are truly in steady state. So that is why this is in theory. None the less,  it does help us explain why we are in such great debt because as we continue to increase consumption without saving or reinvesting we are at a loss. Our savings rate is too low for our long run growth. 
+
+## Part 2
+
+We want to know how it would affect our economy if we were to reallocate our laborers towards more research. Using the Solow-Romer model we are going to adjust these inputs and see how output, investment, and TFP.
+
+In the model we decided to change percentage of labor going towards research from 10% to 20% at year 40. We let this happen for 90 years ending at year 130. (Shown by Orange Line)
+
+![Model](C:/Users\walbr\Desktop\Intermediate Macro\Block 1\6Output3.1.png){width=65%}
+
+As we can see the difference in the orange line as we start changing labor amounts at year 40 we take a bit of a hit in output. We start by losing output but 60 years later we would have the same amount of output then continue to grow more and more. When we stop this increased amount of research at year 130 there is the adjustment of labors showing by the huge increase of output. The line then levels off with a lesser slope which would eventually get back to the blue line. 
+
+The permanent reallocations of variables are the ones that will make a big difference. Otherwise we just continue to grow at the steady state we are already according to this model. Which means that it would be most beneficial for us to reallocate labor permanently to research. 
+
+Another way we could look at this is through Transferring Technology to our country. China has been doing this and we are wondering how this affect us as well through policies of bringing more technology to our country. This first of all would increase TFP(Total Factor Productivity) which means that we will show it through doubling TFP at year 20.
+
+![Model](C:/Users\walbr\Desktop\Intermediate Macro\Block 1\6Output3.2.png){width=65%}
+
+AS we can see in the graph above they doubled their TFP at year 20 and it makes a huge difference from then on. We would end up just about doubling output 100 years later. Investment or savings rate doesn't have to even change because with the huge increase of technology we would just be making that much more output. Thus we would be creating that much more capital and with the same investment percentage we would invest that much more.
+
+So as I am looking at how to make policy as part of the country I would be looking to increase technology and make policies that keep new technology coming in the longrun. It would help us right now and everyone in the future. 
+I was looking into how the US has been doing this and within the past year they have passed two huge bills that increase infrastructure and tech.
+(https://www.cnbc.com/2021/06/08/senate-passes-bipartisan-tech-and-manufacturing-bill-aimed-at-china.html)
+(https://www.npr.org/2021/11/15/1055841358/biden-signs-1t-bipartisan-infrastructure-bill-into-law)
+
+These could have huge impacts as we look into the long run of where the economy is headed. 
+
+
+
+Lastly, I would like to compare two policies that could benefit the US. One is to increase the population through immigration. The other is to try to increase technology by helping more people become researchers in STEM fields.
+
+The first policy would be interesting because we of course are going to get more output with more labor and specialization but it won't be much more capital per capita. It would just bring about the same growth with more people involved, thus getting more total output. 
+
+The second would increase the percentage of people doing research. The results would decrease output right now with fewer labors but increase it later as the research pays off with more TFP per laborer. 
+
+With this in mind I can show the output for each but I will also want to look at the small k or Capital per Capita in each senerio as well. 
+
+```{r, message=FALSE, warning=FALSE}
+
+p1 <- ggdraw() + draw_image("C:/Users/walbr/Desktop/Intermediate Macro/Block 1/6Output3.3kn.png", scale = 0.9)
+
+p2 <- ggdraw() + draw_image("C:/Users/walbr/Desktop/Intermediate Macro/Block 1/6Output3.3Yn.png", scale = 0.9)
+
+
+plot_grid(p1, p2)
+```
+
+These two together show an interesting story of us increasing output by a lot as we have more labor overall. As we increase our immigration by 10% for those 90 years it increases then goes back towards steady state. On the other hand our capital per capita drops by a lot as well. Thus we are producing more output but not not increasing the lifestyle of lives here. We are increasing lifestyle overall of a lot of people though.
+
+```{r, message=FALSE, warning=FALSE}
+p3 <- ggdraw() + draw_image("C:/Users/walbr/Desktop/Intermediate Macro/Block 1/6Output3.3kl.png", scale = 0.9)
+
+p4 <- ggdraw() + draw_image("C:/Users/walbr/Desktop/Intermediate Macro/Block 1/6Output3.3Yl.png", scale = 0.9)
+
+
+plot_grid(p3, p4)
+```
+
+In this case we are also not having as much capital per capita created because our resources have changed have become inputs towards future advancement. This is why our output decreases at first but then increases to be more than our usual steady state from before. 
+
+It is hard to tell output per capita by these graphs but by the end of those 90 years the STEM would increase it more. That is why I would suggest the increase in STEM and Research funds. It would pull more labor that way and help the economy grow in the long run and increase wealth more of the people here than increasing population. 
+
+But if we are going based on Utilitarian arguments it might help overall utility of more people by increasing Immigration. We would increase in Capital per capita still but more people would receive more utility than before. But that is a different issue so I will leave my thoughts to myself.
+

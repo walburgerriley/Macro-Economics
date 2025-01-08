@@ -1,0 +1,134 @@
+---
+title: "Chapter 5 Project"
+author: "Riley Walburger"
+date: "1/26/2022"
+output: html_document
+---
+# Part 1
+
+* Add Graph Part 1.1
+
+
+## Formulas Based On Theory
+
+### Solow Growth Model
+
+$$
+Y_t =F(K_t,L_t) = AK^{\alpha}L^{\beta} = AK^{\frac{1}{3}}L^{\frac{2}{3}}
+$$
+
+$\alpha$ is equal to 1/3 as it is the amount of income that goes to capital owners.
+$\beta$ is equal to 2/3 because it is equal to the amount of income going towards those that own labor. 
+
+$$
+Y_t = I_t + C_T
+$$
+Output is equal to the amount of Investment and Consumption created through year t.
+
+Investment can also be written as amount saved from output in year t $$I_t = \bar{s}Y_t$$. This is because everything else was consumed. The other form of this is given by the equation $$C_t = (1-\bar{s})Y_t$$ thus solving for Consumption($C_t$). 
+
+We also know that the change in Capital over a year is given by two equations. Investment minus  depreciation. Secondly We can just subract the beginning of the Year capital from the end of the year.
+$$
+\Delta K_{t+1} = I_t - \delta K_t 
+$$
+$$
+\Delta K_{t+1} = K_{t+1} - K_t
+$$
+
+From these equations we can set $\Delta K_{t+1}$ equal to itself in different forms.
+
+Thus we get all of these equations equaling each other.
+$$
+\Delta K_{t+1} = K_{t+1} - K_t  = \bar{s}Y_t - \delta K_t
+$$
+
+The last one coming from $\Delta K_{t+1} = I_t - \delta K_t$ and replacing the Investment ($I_t$) with what it is equal to($\bar{s}Y_t$).
+
+We want to take all of these of theses equations and put them into per Capita form from knowing that $$k = \frac{K}{L}$$ $$and$$ $$y = \frac{Y}{L}$$.
+
+After dividing everything by labor symbolized by ($L_t$) we get:
+
+$$ \frac{K_{t+1}-K_t}{L_t} = \frac{\bar{s}Y_t-\delta K_t}{L_t}$$
+This eventually gets simplified to THE LAW OF MOTION:
+
+## Derived Formulas
+
+### Law of Motion
+
+$$\Delta k_{t+1} = \bar{s}Ak^\alpha_t-\delta k_t$$
+This means that the change in capital per capital is equal to the savings rate along with how good we use our invested capital subtracting deprecation. Thus it shows the motion within an economy or country.
+
+## Steady State
+
+Since all countries eventually hit a Steady State(where Depreciation is equal to Investment thus change of capital is 0 as discussed in the chapter). We want to find capital and output in terms of $k^*(s,A,\alpha,\delta)$ and $y^*(s,A,\alpha,\delta)$
+
+Thus we can say that change in capital is 0 leaving us with
+$$0 = \bar{s}Ak^{*\alpha-\delta} k^* $$ $$or$$  $$ \bar{s}Ak^{*\alpha}=\delta k^*$$
+(It is now $k^*$ because we are in steady state thus all $k$ is the same no matter what time we are at.)
+
+We solve this out for two things, firstly we find k* then use this to go back and find y*
+
+$$k^* = (\frac{\bar{s}A}{\delta})^{\frac{1}{1-\alpha}}$$ Taking this back to the equation of $y* = Ak^\alpha$ we get $$y* = A(\frac{\bar{s}A}{\delta})^{\frac{1}{1-\alpha}}$$ with k substituted into it.
+
+## Golden Rule
+
+Since all other variables within these equations besides $\bar{s}$ are unable to use we will mainly focusing on this one and acting like it is just $k^*(s)$ 
+
+From here we are now prepared to maximize consumption based on being able to change our savings rate, $\bar{s}$. 
+
+Thus we use this functiion of consumtion put into terms of per capita. 
+$$c^*(k^*) = f(k^*)-\delta k^*$$
+
+$$FOC: f`(k^*) - \delta = 0$$ $$or$$ $$f`(k^*) = \delta$$
+Thus inside this function we can define 
+$f(k) = Ak^\alpha$ take the derivative ($f^`(k) = \alpha Ak^{\alpha - 1}_{gr}$) and place it with in the function.
+
+We then get:
+$$\alpha Ak^{\alpha - 1}_{gr} = \delta$$
+We then solve for $k$ and get 
+$$k_{gr} = (\frac{\alpha A}{\delta})^\frac{1}{1-\delta}$$
+This is quite interesting as we set it equal to k*. 
+$$(\frac{s A}{\delta})^\frac{1}{1-\delta}= (\frac{\alpha A}{\delta})^\frac{1}{1-\delta}$$
+
+This means that in order to maximize consumption $\alpha$ should be equal to our savings rate. Thus all the capital share of income should put towards investment. This is the amount we would invest in order to maximize consumption once hitting steady state.
+
+# Part 2
+
+## Enacting Tax Policy
+
+As the United States is deciding weather to enact policy relating to decreasing the savings we need to look at the effect it would have on consumption, capital and output. If we were to lower the savings rate we can see below what would would to total output. 
+
+![Output](Output.png)
+The output decreases substantially the next few years after the tax policy is enacted. From there it would come to a steady state well below where we were before. 
+So, if I were in charge, I would want to enact policy to increase the savings rate. In fact as we look at the best savings rate to increase consumption overall for the future year I would want to increase the savings rate to the amount we pay to capital owners. based on the math done above we want to have $k^* = k_{gr}$ Thus we were able to show it as below.$$(\frac{s A}{\delta})^\frac{1}{1-\delta}= (\frac{\alpha A}{\delta})^\frac{1}{1-\delta}$$
+
+This means that $\alpha = \bar{s}$ meaning exactly that that the amount made by capital owners is equal to the savings rate for the most consumption. This is what would happen instead if we increased the savings rate 33% based on the Solow model we are using.
+![Output33](Output33.png)
+As said in Investopedia the FED often increases savings rates through higher interest rates. The FED can lead this which helps the economy keep growing in the long run through doing this.
+
+
+## Technology Transfers
+
+China has been trying to increase new technology within their country through various incentives such as trade. As they have been doing this they have been increasing their TFP(Total Factor of Productivity) with the better technology. We show this through increasing $A$ as a factor in the Solow model.
+
+![Output2](Output2.png)
+
+
+We can see that above that as we increase A from 1 to 2 (for example) in year 10, they would increase output by a lot until moving to a much higher steady state. As output increase in this way we would have more to invest and more to consume. They might stay pretty similar in ratio of investment to capital, but in terms of output and GDP per capita they would have much more.  
+
+At seeing this one might think that it would help a lot to transfer technology to help developing countries. However enacting a one time policy of transferring technology is different than consistently increasing the technology within your country. A one time transfer would most likely look much more like a spike in output per capita. They would not however not be able to keep up with this level of capital nor technology with huge increases of investment. Most likely however this is not going to change the ratio of investment to consumption or anything in that sense leaving us with just a spike and then later a dip as depreciation hits them back to their old steady state. Looking like the graph below.
+
+![OutputA10](OutputA10.png)
+I assumed that they would have this increase of A or TFP for about 10 years. They would then drop to about their same place as before.
+So if I were in charge I would see if there is more a permanent thing that the country can do to increase their TFP rather than just giving them a one time increase for a few years. 
+
+## Foreign Aid 
+
+As Ethiopia receives help from other countries they doubled their current capital stock. This instantly puts their capital double what it was previously and increases output for a little while as seen in the graph below.  
+
+![Outputgift](Outputgift.png)
+As seen though this does not increase Investment, thus they are temporarily above their steady state without the help. Without something to continue this growth they will just fall back to the same GDP per capita as before. Thus their investment and capital ratio stays exactly the same. 
+
+The capital per person will increase from about 1.5 to about 3 per person but then will continue to fall back to 1.5 per person. If for reasons such as covid they were to be below steady state then be doubled they would go from below steady state to being above steady state and then back to steady state. In the long run a country will always end back at their steady state which is why it is so much more important to help people increase their steady state rather than just gifting help. Gifts only last a short amount time but if countries are to improve in the long run they must be able to invest and create more capital themselves. 
+
+This is why I don't think just gifting other countries is very useful. I think that instead we should help countries understand what they can do to increase the wealth within their country. Such as increase theri savings rate, make investment easier, get better technology through trade and benefit companies that will come into your country.
